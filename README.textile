@@ -1,0 +1,15 @@
+h1. Tweetspeak
+
+Tweetspeak is a little experiment involving JavaScript, HTML5 audio and speech synthesis on Twitter. It consists in an small piece of JavaScript code that, when executed on Twitter web interface, adds an _Speak_ link next to every tweet on the page, letting you listen the content of any individual tweet in its original language.
+
+h2. Dependencies
+
+The script relies on the "jQuery library":http://jquery.com/ in order to run, which is already included by Twitter on its site as of now. The "Microsoft Translator service":http://www.microsofttranslator.com/dev/ is used for language detection, translation and speech synthesis (TTS), requiring the use of a private "Bing AppID":http://www.bing.com/toolbox/bingdeveloper/.
+
+h2. Compatibility
+
+Tweetspeak has been test on Chrome 12, Firefox 5, IE9, Opera 11 and Safari 5. It should work on any browser that supports "HTML5 audio":http://dev.w3.org/html5/spec/Overview.html#the-audio-element and the WAV format, as well as the @DOMNodeInserted@ event.
+
+h2. Implementations
+
+You can try Tweetspeak using "this bookmarklet":http://labs.rbardini.com/tweetspeak/.
