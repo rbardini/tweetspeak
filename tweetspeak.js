@@ -25,44 +25,48 @@
 		init();
 	}
 	
-	function inject(src) {
-		var script = document.createElement('script');
-		script.src = src;
-		document.body.appendChild(script);
+	function invokeService(methodName, data, callback) {
+		if (typeof (data) === 'undefined') {
+			data = {};
+		}
+		data.appId = appId;
+		
+		return $.ajax({
+			url: apiUri+methodName,
+			dataType: "jsonp",
+			jsonp: "oncomplete",
+			data: data
+		}).success(function(data) {
+				if (typeof callback === 'function') {
+					callback(data);
+				}
+		});
 	}
 	
 	function speak() {
 		var title = $(this).find('b').text('Loading...'),
-			tweet = encodeURIComponent($(this).closest('.tweet-content').find('.tweet-text').text()),
-			language;
+			tweet = $(this).closest('.tweet-content').find('.tweet-text').text(),
+			data = {text:tweet, format:format};
 		
-		window.tweetspeakDetectAndPlay = function(response) {
-			document.body.removeChild(document.body.lastChild);
-			language = response;
-			
-			if ($.inArray(language,supported) !== -1) {
-				inject(apiUri+'Speak?appId='+appId+'&text='+tweet+'&language='+language+'&format='+format+'&oncomplete=tweetspeakPlay');
+		invokeService("Detect", data, function(language) {
+			if ($.inArray(language, supported) !== -1) {
+				data.language = language;
+				invokeService("Speak", data, function(stream) {
+					var audio = document.createElement('audio');
+					audio.src = stream;
+					audio.play();
+					
+					audio.addEventListener('playing', function() {
+						title.text('Speaking... ('+language.toUpperCase()+')');
+					}, false);
+					audio.addEventListener('ended', function() {
+						title.text('Speak');
+					}, false);
+				});
 			} else {
 				title.text('Can\'t speak in '+language.toUpperCase());
 			}
-		};
-		
-		window.tweetspeakPlay = function(response) {
-			document.body.removeChild(document.body.lastChild);
-			
-			var audio = document.createElement('audio');
-			audio.src = response;
-			audio.play();
-			
-			audio.addEventListener('playing', function() {
-				title.text('Speaking... ('+language.toUpperCase()+')');
-			}, false);
-			audio.addEventListener('ended', function() {
-				title.text('Speak');
-			}, false);
-		};
-		
-		inject(apiUri+'Detect?appId='+appId+'&text='+tweet+'&oncomplete=tweetspeakDetectAndPlay');
+		});
 	}
 	
 	function addAnchor(tweet) {
