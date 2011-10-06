@@ -15,3 +15,4 @@ h2. Implementations
 You can try Tweetspeak using "this bookmarklet":http://labs.rbardini.com/tweetspeak/. The following implementations are also available:
 
 * !http://userscripts.org/images/script_icon.png! "User script":http://userscripts.org/scripts/show/114063
+* !http://www.opera.com/favicon.ico! "Opera extension":https://addons.opera.com/addons/extensions/details/tweetspeak/
