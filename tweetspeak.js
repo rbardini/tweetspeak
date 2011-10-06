@@ -17,7 +17,7 @@
 			// Bing AppID — www.bing.com/toolbox/bingdeveloper/
 			appId = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
 			// Microsoft Translator V2 AJAX API — msdn.microsoft.com/en-us/library/ff512404.aspx
-			apiUri = 'http://api.microsofttranslator.com/V2/Ajax.svc/',
+			baseUri = 'http://api.microsofttranslator.com/V2/Ajax.svc/',
 			// Default content-type (currently the only allowed value) — msdn.microsoft.com/en-us/library/ff512405.aspx
 			format = 'audio/wav',
 			// Available languages (hardcoded to speed things up) — msdn.microsoft.com/en-us/library/ff512400.aspx
@@ -32,9 +32,9 @@
 		data.appId = appId;
 		
 		return $.ajax({
-			url: apiUri+methodName,
-			dataType: "jsonp",
-			jsonp: "oncomplete",
+			url: baseUri+methodName,
+			dataType: 'jsonp',
+			jsonp: 'oncomplete',
 			data: data
 		}).success(function(data) {
 				if (typeof callback === 'function') {
@@ -45,13 +45,13 @@
 	
 	function speak() {
 		var title = $(this).find('b').text('Loading...'),
-			tweet = $(this).closest('.tweet-content').find('.tweet-text').text(),
+			tweet = $(this).closest('.tweet-content').find('.tweet-text').text().replace(/\"/g, '\''),
 			data = {text:tweet, format:format};
 		
-		invokeService("Detect", data, function(language) {
+		invokeService('Detect', data, function(language) {
 			if ($.inArray(language, supported) !== -1) {
 				data.language = language;
-				invokeService("Speak", data, function(stream) {
+				invokeService('Speak', data, function(stream) {
 					var audio = document.createElement('audio');
 					audio.src = stream;
 					audio.play();
