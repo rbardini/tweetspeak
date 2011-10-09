@@ -1,5 +1,5 @@
 /*
- * Tweetspeak v1.0
+ * Tweetspeak v1.11
  * Copyright (c) 2011 Rafael Bardini
  * https://github.com/rbardini/tweetspeak
  * 
