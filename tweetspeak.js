@@ -1,5 +1,5 @@
 /*
- * Tweetspeak v1.11
+ * Tweetspeak v1.2
  * Copyright (c) 2011 Rafael Bardini
  * https://github.com/rbardini/tweetspeak
  * 
@@ -45,7 +45,7 @@
 	
 	function speak() {
 		var title = $(this).find('b').text('Loading...'),
-			tweet = $(this).closest('.tweet-content').find('.tweet-text').text().replace(/\"/g, '\''),
+			tweet = $(this).closest('.content').find('.js-tweet-text').text().replace(/\"/g, '\''),
 			data = {text:tweet, format:format};
 		
 		invokeService('Detect', data, function(language) {
@@ -57,7 +57,7 @@
 					audio.play();
 					
 					audio.addEventListener('playing', function() {
-						title.text('Speaking... ('+language.toUpperCase()+')');
+						title.text('Speaking ('+language.toUpperCase()+')');
 					}, false);
 					audio.addEventListener('ended', function() {
 						title.text('Speak');
@@ -69,22 +69,23 @@
 		});
 	}
 	
-	function addAnchor(tweet) {
-		var anchor = '<a href="#" class="tweetspeak-action" title="Speak"><span><i/><b>Speak</b></span></a>';
-		$(anchor).appendTo(tweet.find('.tweet-actions')).click(speak);
+	function addAnchor(el) {
+		var anchor = '<li class="action-speak-container"><a class="with-icn js-action-speak" href="#" title="Speak"><i class="action-speak"/><b>Speak</b></a></li>';
+		$(anchor).insertBefore(el.find('.action-open-container')).click(speak);
 	}
 	
 	function init() {
 		// Base64-encoded speaker icon
-		$('head').append('<style>.tweet-actions .tweetspeak-action span i {background:transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAPCAYAAAAYjcSfAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOwwAADsMBx2+oZAAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAHlSURBVHjaxZXNK0RRGMbvHeMjokw+k8UUOxm5s2BGGmWhEKWMje2Mf8KG4j9QY8HCjoSQDZIii4mFnRQpFPlMMsT1O/XeOgvN3Lvy1q/nOfd2z3PPnfecMWzbdoVlWT3iPZNIJHb1sc/IUeFwuFTsOz5qeKhkMhkUe42fFU9o7goR1pFOp/fxdfhaD7njhM2nUqlRfA++y6BMlvvX6gLIO9QQdsl4BL8DJlhc28qyuhByAzHClhjf4gfAD1NcizmhemAQsWANhmAPfNBK2Ab3e/HH+Ns/AoeRaQjBOcShACYIa+f+IX7cpEHqteeKIQKvTLpMQJUa41fxQ/gVsKBavQCT9MlzNtRBCs4JaOReFD+DD+HP8E0wBVG1gm6NCKj6AYOJ7xCTQD/6AgF4hEpQtS5sSKCqDBiEHSB5BJagZ9AMJ9DmppEyUASfUCiarUzNP0GFps+uuleCMqIfUADZytZ8OTxAAO7V2And1jjUt5L8pjaf+QstgydtAlX9Qh+MOS8pTRVBvvnMb2gDnEILHLntXlO6dzNH98alWfTu9cMk4RGne3Pt01omv2Acl33q87BPuwhaZHyNH4R8Z5+6OXM7FOKHocbDmTsH8+KvIKa8m9BS0U6Iejzog6ILMOtc/5d/mV/71PLjqPlragAAAABJRU5ErkJggg==") no-repeat 0 0} .tweet-actions .tweetspeak-action:hover span i {background-position:-15px 0}</style>');
+		$('head').append('<style>.action-speak {background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAaCAMAAACXfxyGAAAAJFBMVEUAAAD///////////////////////////////////////////+0CY3pAAAAC3RSTlMAEDBAUGBwf4+/7+k0guMAAABUSURBVHja1dJJDgAQDAXQGmu4/319LIu/1qQiedJUkf6ML9jplRMyiG9nTmstEi0v3TWyVMvQyajcXDS8A5swD94ZqYxZcd4avxgfCx8qf5J//9oAtDoeW00Jw04AAAAASUVORK5CYII="); background-position:left center; width:18px} .opened-tweet .stream-item-header .action-speak-container {display:none}</style>');
 		
 		var audio = document.createElement('audio');
 		
 		if (audio !== null && audio.canPlayType && audio.canPlayType(format)) {
 			addAnchor($('.stream-item'));
 			$(document).bind('DOMNodeInserted', function(event) {
-				if ($(event.target).hasClass('stream-item')) {
-					addAnchor($(event.target));
+				var el = $(event.target);
+				if (el.is('.stream-item, .js-tweet-details-fixer')) {
+					addAnchor(el);
 				}
 			});
 		}
