@@ -76,7 +76,7 @@
 	
 	function init() {
 		// Base64-encoded speaker icon
-		$('head').append('<style>.sm-speak {background:#999 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOAQMAAAAVCq6zAAAABlBMVEUAAAD29vYCFqe/AAAAAXRSTlMAQObYZgAAAC1JREFUeNo1yrENADAIA0FGz2aM4hVcUqAQKxbFNa+PGX5XWgqMkwJaurWf/R8lrCXzVxJVNgAAAABJRU5ErkJggg==") no-repeat left center; width:14px; height:13px} .opened-tweet .stream-item-header .action-speak-container {display:none}</style>');
+		$('head').append('<style>.js-action-speak {color:#0064CD !important} .sm-speak {background:#0064CD url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOAQMAAAAVCq6zAAAABlBMVEUAAAD29vYCFqe/AAAAAXRSTlMAQObYZgAAAC1JREFUeNo1yrENADAIA0FGz2aM4hVcUqAQKxbFNa+PGX5XWgqMkwJaurWf/R8lrCXzVxJVNgAAAABJRU5ErkJggg==") no-repeat left center; width:14px; height:13px} .opened-tweet .stream-item-header .action-speak-container {display:none}</style>');
 		
 		var audio = document.createElement('audio');
 		
