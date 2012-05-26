@@ -70,8 +70,13 @@
 	}
 	
 	function addAnchor(el) {
-		var anchor = '<li class="action-speak-container"><a class="with-icn js-action-speak" href="#" title="Speak"><i class="sm-speak"/><b>Speak</b></a></li>';
-		$(anchor).insertAfter(el.find('.action-fav-container')).click(speak);
+		var anchor = '<li class="action-speak-container"><a class="with-icn js-action-speak" href="#" title="Speak"><i class="sm-speak"/><b>Speak</b></a></li>',
+			lastAction = el.find('.tweet-actions').children().last();
+		
+		$(anchor).insertAfter(lastAction).click(speak);
+		if (lastAction.is('.action-speak-container')) {
+			lastAction.remove();
+		}
 	}
 	
 	function init() {
@@ -81,10 +86,12 @@
 		var audio = document.createElement('audio');
 		
 		if (audio !== null && audio.canPlayType && audio.canPlayType(format)) {
-			addAnchor($('.stream-item'));
+			$('.stream-item').each(function() {
+				addAnchor($(this));
+			});
 			$(document).bind('DOMNodeInserted', function(event) {
 				var el = $(event.target);
-				if (el.is('.stream-item, .js-tweet-details-fixer')) {
+				if (el.is('.stream-item')) {
 					addAnchor(el);
 				}
 			});
