@@ -14,13 +14,13 @@
 		window.setTimeout(tweetspeak, 200);
 	} else {
 		var $ = jQuery = window.jQuery,
-			// Bing AppID — www.bing.com/toolbox/bingdeveloper/
+			// Bing AppID â€” www.bing.com/toolbox/bingdeveloper/
 			appId = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-			// Microsoft Translator V2 AJAX API — msdn.microsoft.com/en-us/library/ff512404.aspx
+			// Microsoft Translator V2 AJAX API â€” msdn.microsoft.com/en-us/library/ff512404.aspx
 			baseUri = 'http://api.microsofttranslator.com/V2/Ajax.svc/',
-			// Default content-type (currently the only allowed value) — msdn.microsoft.com/en-us/library/ff512405.aspx
+			// Default content-type (currently the only allowed value) â€” msdn.microsoft.com/en-us/library/ff512405.aspx
 			format = 'audio/wav',
-			// Available languages (hardcoded to speed things up) — msdn.microsoft.com/en-us/library/ff512400.aspx
+			// Available languages (hardcoded to speed things up) â€” msdn.microsoft.com/en-us/library/ff512400.aspx
 			supported  = ['ca','ca-es','da','da-dk','de','de-de','en','en-au','en-ca','en-gb','en-in','en-us','es','es-es','es-mx','fi','fi-fi','fr','fr-ca','fr-fr','it','it-it','ja','ja-jp','ko','ko-kr','nb-no','nl','nl-nl','no','pl','pl-pl','pt','pt-br','pt-pt','ru','ru-ru','sv','sv-se','zh-chs','zh-cht','zh-cn','zh-hk','zh-tw'];
 		init();
 	}

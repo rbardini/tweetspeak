@@ -1,18 +1,18 @@
-h1. Tweetspeak
+h1. "Tweetspeak":https://rbardini.github.io/tweetspeak/
 
 Tweetspeak is a little experiment involving JavaScript, HTML5 audio and speech synthesis on Twitter. It consists of an small piece of JavaScript code that, when executed on Twitter web interface, adds an _Speak_ link next to every tweet on the page, allowing users to listen to any particular tweet in its original language.
 
 h2. Dependencies
 
-The script relies on the "jQuery library":http://jquery.com/ in order to run, which is already included by Twitter on its site as of now. The "Microsoft Translator service":http://www.microsofttranslator.com/dev/ is used for language detection, translation and speech synthesis (TTS), requiring the use of a private "Bing AppID":http://www.bing.com/toolbox/bingdeveloper/.
+The script relies on the "jQuery library":https://jquery.com/ in order to run, which is already included by Twitter on its site as of now. The "Microsoft Translator service":https://www.microsofttranslator.com/dev/ is used for language detection, translation and speech synthesis (TTS), requiring the use of a private "Bing AppID":https://www.bing.com/toolbox/bingdeveloper/.
 
 h2. Compatibility
 
-Tweetspeak has been test on Chrome 12, Firefox 5, IE9, Opera 11 and Safari 5. It should work on any browser that supports "HTML5 audio":http://dev.w3.org/html5/spec/Overview.html#the-audio-element and the WAV format, as well as the @DOMNodeInserted@ event.
+Tweetspeak has been test on Chrome 12, Firefox 5, IE9, Opera 11 and Safari 5. It should work on any browser that supports "HTML5 audio":https://dev.w3.org/html5/spec/Overview.html#the-audio-element and the WAV format, as well as the @DOMNodeInserted@ event.
 
 h2. Implementations
 
-You can try Tweetspeak using "this bookmarklet":http://labs.rbardini.com/tweetspeak/. The following implementations are also available:
+You can try Tweetspeak using "this bookmarklet":https://rbardini.github.io/tweetspeak/. The following implementations are also available:
 
-* !http://userscripts.org/images/script_icon.png! "User script":http://userscripts.org/scripts/show/114063
-* !http://www.opera.com/favicon.ico! "Opera extension":https://addons.opera.com/addons/extensions/details/tweetspeak/
+* !https://userscripts-mirror.org/images/script_icon.png! "User script":https://userscripts-mirror.org/scripts/show/114063
+* !https://cdn-production-opera-website.operacdn.com/staticfiles/assets/images/favicon/favicon-16x16.png! "Opera 12 extension":https://addons.opera.com/addons/extensions/details/tweetspeak/
