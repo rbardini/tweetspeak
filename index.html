@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Tweetspeak</title>
+		<meta name="author" content="Rafael Bardini" />
+		<meta name="description" content="An experiment involving JavaScript, HTML5 audio and speech synthesis on Twitter" />
+		<meta name="keywords" content="twitter, tweets, audio, speak, speech synthesis, text-to-speech, tts" />
+		<style>
+			body {font:13px "Helvetica Neue", Arial, Helvetica, "Liberation Sans", FreeSans, sans-serif}
+			#wrap {display:table; height:100%; margin:0 auto}
+			#main {display:table-cell; padding:20px; vertical-align:middle; width:300px}
+			p {font-size:12px; margin:10px 0}
+			ol {border:1px dotted; border-left:0; border-right:0; margin:10px 0; padding:15px 0 10px 20px}
+			li {margin-bottom:5px}
+			a {color:#666}
+			a:hover {color:#000}
+			.bookmarklet {color:#FFF; background:#666; border-radius:4px; padding:3px 5px; text-decoration:none}
+			.bookmarklet:hover {background:#000; color:#FFF}
+			.speak {background:transparent url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAPCAMAAADjyg5GAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAFnRFWHRDcmVhdGlvbiBUaW1lADA1LzE5LzExYpGvKgAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNXG14zYAAAB4UExURQAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0IylWkAAAAodFJOUwACBAUIDA0SExQVFhgZGhsdICEjJzU7PD5ERUhJSktMUFFTVFZXWGE/nRvkAAAAaklEQVR42l2PRxKAIBAExxwQxZwDJv7/Q7UsRelbH3ZmFpIWH2xUBSRliZXixjFj7D7pbksWYw/CEQMFYywTM8iEWctHiAsOcL32UvFqb1URk8qNxk2FciuT6XAmP70JNo90/1WBuln56ABmSwoMnx4ClQAAAABJRU5ErkJggg==") no-repeat 0 0; color:#666; font-size:11px; font-style:normal; padding-left:16px; text-decoration:underline}
+			img {vertical-align:bottom}
+		</style>
+		<script>
+			function instructions(link) {
+				window.alert(link.title);
+				return false;
+			}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<a href="https://github.com/rbardini/tweetspeak"><img style="position:absolute; top:0; right:0" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+				<h1>Tweetspeak</h1>
+				<em>An experiment involving JavaScript, HTML5 audio and speech synthesis on&nbsp;Twitter</em>
+				<ol>
+					<li>Drag <a href="javascript:(function(){var a,b='twitter.com';if(window.location.host!==b){window.alert('Tweetspeak only works on Twitter!\nPlease visit '+b+' and try again.')}else{a=document.createElement('script');a.src='https://rbardini.github.io/tweetspeak/bookmarklet.min.js';document.body.appendChild(a)}})();" class="bookmarklet" onclick="return instructions(this);" title="Drag this link to your bookmarks bar to install">Tweetspeak</a> to your bookmarks bar</li>
+					<li>Go to <a href="https://twitter.com/">Twitter.com</a> and click your <em>Tweetspeak</em> bookmark</li>
+					<li>Done. Click the <em class="speak">Speak</em> link below any tweet to listen ;)</li>
+				</ol>
+				<p>Tested on Chrome 12, Firefox 5, IE9, Opera 11 and Safari 5.</p>
+			</div>
+		</div>
+	</body>
+</html>
