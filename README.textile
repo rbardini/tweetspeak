@@ -1,4 +1,4 @@
-h1. "Tweetspeak":https://rbardini.github.io/tweetspeak/
+h1. "Tweetspeak":https://tweetspeak.rbrd.in
 
 Tweetspeak is a little experiment involving JavaScript, HTML5 audio and speech synthesis on Twitter. It consists of an small piece of JavaScript code that, when executed on Twitter web interface, adds an _Speak_ link next to every tweet on the page, allowing users to listen to any particular tweet in its original language.
 
@@ -14,7 +14,7 @@ Tweetspeak has been test on Chrome 12, Firefox 5, IE9, Opera 11 and Safari 5. It
 
 h2. Implementations
 
-You can try Tweetspeak using "this bookmarklet":https://rbardini.github.io/tweetspeak/. The following implementations are also available:
+You can try Tweetspeak using "this bookmarklet":https://tweetspeak.rbrd.in. The following implementations are also available:
 
 * !https://userscripts-mirror.org/images/script_icon.png! "User script":https://userscripts-mirror.org/scripts/show/114063
 * !https://cdn-production-opera-website.operacdn.com/staticfiles/assets/images/favicon/favicon-16x16.png! "Opera 12 extension":https://addons.opera.com/addons/extensions/details/tweetspeak/
